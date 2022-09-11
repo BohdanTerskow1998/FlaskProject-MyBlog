@@ -7,15 +7,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(200), nullable=False)
     text = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
-    
+
     def __repr__(self):
-        return "Users %r" %self.id
+        return "Users %r" % self.id
 
 
 @app.route('/')
@@ -51,6 +52,7 @@ def comments():
 def comments_for_reading():
     users = Users.query.all()
     return render_template('comments_for_reading.html', users=users)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
