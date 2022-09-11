@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Комменты 📖{% endblock %}
+{% block content %}
+	{% for user in users %}
+		<strong>{{user.name}}</strong> <br />
+		{{user.email}} <br />
+		<i>{{user.text}}</i> <br /><br />
+	{% endfor %}
+{% endblock %}
